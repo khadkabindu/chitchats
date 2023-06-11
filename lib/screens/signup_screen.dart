@@ -1,17 +1,17 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:social_media/screens/signup_screen.dart';
 
 import 'home_screen.dart';
+import 'login_screen.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({Key? key}) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
+
   bool showPassword = false;
   int? _selectedRadioValue = 0;
   final bool _isClickable = true;
@@ -23,7 +23,6 @@ class _LoginScreenState extends State<LoginScreen> {
       });
     }
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,6 +39,31 @@ class _LoginScreenState extends State<LoginScreen> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      const Text(
+                        "  Fullname",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      TextFormField(
+                        decoration: InputDecoration(
+                          hintText: "Fullname",
+                          prefixIcon: Icon(
+                            Icons.person,
+                            color: Colors.black,
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15),
+                              borderSide: BorderSide(color: Colors.black)),
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15),
+                              borderSide: BorderSide(color: Colors.black)),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
                       const Text(
                         "  Email",
                         style: TextStyle(color: Colors.black),
@@ -156,12 +180,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         children: [
                           Text("Dont't have an account? "),
                           GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => const SignUpScreen()),
-                              );
-                            },
+                            onTap: () {},
                             child: Text(
                               "Sign up",
                               style: TextStyle(color: Colors.blueAccent),
@@ -213,30 +232,6 @@ class _LoginScreenState extends State<LoginScreen> {
             )
           ],
         ),
-      ),
-    );
-  }
-}
-
-class CustomSignUpButton extends StatelessWidget {
-  final String? imagePath;
-  final String? name;
-
-  const CustomSignUpButton(
-      {Key? key, @required this.imagePath, @required this.name})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 55,
-      width: 170,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: Colors.grey)),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [Image.asset("images/$imagePath"), Text("${name}")],
       ),
     );
   }
