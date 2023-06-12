@@ -155,7 +155,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         onTap: (){
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => const HomeScreen()),
+                            MaterialPageRoute(builder: (context) =>  HomeScreen()),
                           );
                         },
                         child: Container(
@@ -167,26 +167,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           height: 50,
                           width: MediaQuery.of(context).size.width,
                           child: Text(
-                            "Login",
+                            "Sign Up",
                             style: TextStyle(color: Colors.white),
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text("Dont't have an account? "),
-                          GestureDetector(
-                            onTap: () {},
-                            child: Text(
-                              "Sign up",
-                              style: TextStyle(color: Colors.blueAccent),
-                            ),
-                          ),
-                        ],
                       ),
                       SizedBox(
                         height: 20,
