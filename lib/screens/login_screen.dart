@@ -131,7 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         onTap: (){
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) =>  HomeScreen()),
+                            MaterialPageRoute(builder: (context) =>  NavigationWidget()),
                           );
                         },
                         child: Container(
