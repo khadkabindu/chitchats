@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:social_media/models/post_model.dart';
 
 import '../widgets/profile_gradient_avatar.dart';
 
@@ -182,11 +183,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   }),
             ),
           ),
-          SizedBox(
-            height: 10,
-          ),
           Container(
             height: 495,
+            padding: EdgeInsets.all(16),
             child: ListView.builder(
                 itemCount: 5,
                 shrinkWrap: true,
@@ -197,7 +196,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Row(
                         children: [
                           CircleAvatar(
-                            backgroundImage: AssetImage("images/varsha.jpeg"),
+                            backgroundImage: AssetImage("images/${Post.posts[index].profile_image}"),
                           ),
                           SizedBox(
                             width: 15,
@@ -206,8 +205,13 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("${username[0]}.21h", style: TextStyle(color: Colors.white),),
-                                Text("kathmandu, Nepal", style: TextStyle(color: Colors.white),)
+                                Row(
+                                  children: [
+                                    Text(Post.posts[index].username, style: TextStyle(color: Colors.white),),
+                                    Text(".${Post.posts[index].post_hours}h", style: TextStyle(color: Colors.grey),)
+                                  ],
+                                ),
+                                Text(Post.posts[index].location, style: TextStyle(color: Colors.white),)
                               ],
                             ),
                           ),
@@ -223,7 +227,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Container(
                         height: 400,
                         child: Image.asset(
-                          "images/city.jpg",
+                          "images/${Post.posts[index].post_image}",
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -232,8 +236,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
                 }),
           ),
-
-
         ],
       ),
     );
