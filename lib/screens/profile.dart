@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:social_media/screens/followers_list.dart';
 import 'package:social_media/screens/profile_posts.dart';
 
 class Profile extends StatefulWidget {
@@ -39,13 +40,16 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin{
           child: Column(
             children: [
               Row(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   CircleAvatar(
                     backgroundImage: AssetImage("images/varsha.jpeg"),
                     radius: 40,
                   ),
+                  SizedBox(width: 30,),
 
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         children: [
@@ -53,6 +57,7 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin{
                             "varshathapa__",
                             style: TextStyle(color: Colors.white),
                           ),
+                          SizedBox(width: 20,),
                           IconButton(
                               onPressed: () {},
                               icon: Icon(
@@ -61,7 +66,6 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin{
                               ))
                         ],
                       ),
-                      SizedBox(width: 50,),
                       Container(
                         width: 200,
                         height: 30,
@@ -99,7 +103,7 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin{
                   controller: _tabController,
                   children: [
                     ProfilePosts(),
-                    Center(child: Text('Followers')),
+                    FollowersList(),
                     Center(child: Text('Following')),
                   ],
                 ),
