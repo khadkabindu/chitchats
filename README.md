@@ -1,4 +1,4 @@
-# social_media
+# chitchats
 chitchats is an app that allows user to view and share their pictures. 
 
 ### Screens of the app
