@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:social_media/screens/profile_posts.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -97,11 +98,8 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin{
                 child: TabBarView(
                   controller: _tabController,
                   children: [
-// Posts Tab Content
-                    Center(child: Text('Posts')),
-// Followers Tab Content
+                    ProfilePosts(),
                     Center(child: Text('Followers')),
-// Following Tab Content
                     Center(child: Text('Following')),
                   ],
                 ),
