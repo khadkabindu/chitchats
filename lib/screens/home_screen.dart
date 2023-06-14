@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:social_media/models/post_model.dart';
+import 'package:social_media/screens/profile.dart';
 
 import '../widgets/profile_gradient_avatar.dart';
 
@@ -19,13 +20,20 @@ class _NavigationWidgetState extends State<NavigationWidget> {
     });
   }
 
+  profileImage (){
+    return const CircleAvatar(
+      radius: 40,
+      backgroundImage: AssetImage("images/varsha.jpeg"),
+    );
+  }
 
-  static const List<IconData> _selectedIcons = [
+  static const List<dynamic> _selectedIcons = [
     Icons.home_filled,
     Icons.explore,
     Icons.add_box_sharp,
     Icons.messenger_outlined,
-    Icons.person
+    Icons.person_outline
+
   ];
 
   static const List<IconData> _unselectedIcons = [
@@ -57,12 +65,7 @@ class _NavigationWidgetState extends State<NavigationWidget> {
         style: TextStyle(color: Colors.white),
       ),
     ),
-    Center(
-      child: Text(
-        "Profile",
-        style: TextStyle(color: Colors.black),
-      ),
-    ),
+    Profile(),
   ];
 
   @override
@@ -93,6 +96,7 @@ class _NavigationWidgetState extends State<NavigationWidget> {
     );
   }
 }
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -187,7 +191,7 @@ class _HomeScreenState extends State<HomeScreen> {
             height: 495,
             padding: EdgeInsets.all(16),
             child: ListView.builder(
-                itemCount: 5,
+                itemCount: 4,
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
                 itemBuilder: (BuildContext context, int index){
