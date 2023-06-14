@@ -3,6 +3,7 @@ import 'package:social_media/models/post_model.dart';
 import 'package:social_media/screens/profile.dart';
 
 import '../widgets/profile_gradient_avatar.dart';
+import 'upload_post.dart';
 
 class NavigationWidget extends StatefulWidget {
   const NavigationWidget({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ class _NavigationWidgetState extends State<NavigationWidget> {
     });
   }
 
-  profileImage (){
+  profileImage() {
     return const CircleAvatar(
       radius: 40,
       backgroundImage: AssetImage("images/varsha.jpeg"),
@@ -33,7 +34,6 @@ class _NavigationWidgetState extends State<NavigationWidget> {
     Icons.add_box_sharp,
     Icons.messenger_outlined,
     Icons.person_outline
-
   ];
 
   static const List<IconData> _unselectedIcons = [
@@ -44,7 +44,6 @@ class _NavigationWidgetState extends State<NavigationWidget> {
     Icons.person_outline
   ];
 
-
   List<Widget> _widgetOption = <Widget>[
     HomeScreen(),
     Center(
@@ -53,12 +52,7 @@ class _NavigationWidgetState extends State<NavigationWidget> {
         style: TextStyle(color: Colors.white),
       ),
     ),
-    Center(
-      child: Text(
-        "Add",
-        style: TextStyle(color: Colors.white),
-      ),
-    ),
+    UploadPosts(),
     Center(
       child: Text(
         "Messages",
@@ -80,12 +74,14 @@ class _NavigationWidgetState extends State<NavigationWidget> {
         unselectedItemColor: Colors.white,
         showSelectedLabels: false,
         showUnselectedLabels: false,
-        items:  List.generate(
+        items: List.generate(
           _selectedIcons.length,
-              (index) => BottomNavigationBarItem(
-                backgroundColor: Colors.transparent,
+          (index) => BottomNavigationBarItem(
+            backgroundColor: Colors.transparent,
             icon: Icon(
-              index == _selectedIndex ? _selectedIcons[index] : _unselectedIcons[index],
+              index == _selectedIndex
+                  ? _selectedIcons[index]
+                  : _unselectedIcons[index],
             ),
             label: "",
           ),
@@ -96,7 +92,6 @@ class _NavigationWidgetState extends State<NavigationWidget> {
     );
   }
 }
-
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -140,13 +135,18 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               IconButton(
                 onPressed: () {},
-                icon: Icon(Icons.notifications_outlined,color: Colors.white,),
+                icon: Icon(
+                  Icons.notifications_outlined,
+                  color: Colors.white,
+                ),
                 iconSize: 30,
               ),
-
               IconButton(
                 onPressed: () {},
-                icon: Icon(Icons.favorite_outline, color: Colors.white,),
+                icon: Icon(
+                  Icons.favorite_outline,
+                  color: Colors.white,
+                ),
                 iconSize: 30,
               ),
             ],
@@ -181,7 +181,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         SizedBox(
                           height: 5,
                         ),
-                        Text(username[index], style: TextStyle(color: Colors.white),)
+                        Text(
+                          username[index],
+                          style: TextStyle(color: Colors.white),
+                        )
                       ],
                     );
                   }),
@@ -191,66 +194,106 @@ class _HomeScreenState extends State<HomeScreen> {
             height: 495,
             padding: EdgeInsets.all(16),
             child: ListView.builder(
-                itemCount: 4,
-                shrinkWrap: true,
-                scrollDirection: Axis.vertical,
-                itemBuilder: (BuildContext context, int index){
-                  return Column(
-                    children: [
-                      Row(
-                        children: [
-                          CircleAvatar(
-                            backgroundImage: AssetImage("images/${Post.posts[index].profile_image}"),
-                          ),
-                          SizedBox(
-                            width: 15,
-                          ),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    Text(Post.posts[index].username, style: TextStyle(color: Colors.white),),
-                                    Text(".${Post.posts[index].post_hours}h", style: TextStyle(color: Colors.grey),)
-                                  ],
-                                ),
-                                Text(Post.posts[index].location, style: TextStyle(color: Colors.white),)
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            width: 15,
-                          ),
-                          IconButton(
-                            onPressed: () {},
-                            icon: Icon(Icons.more_horiz, color: Colors.white,),
-                          )
-                        ],
-                      ),
-                      Container(
-                        height: 400,
-                        child: Image.asset(
-                          "images/${Post.posts[index].post_image}",
-                          fit: BoxFit.cover,
+              itemCount: 4,
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              itemBuilder: (BuildContext context, int index) {
+                return Column(
+                  children: [
+                    Row(
+                      children: [
+                        CircleAvatar(
+                          backgroundImage: AssetImage(
+                              "images/${Post.posts[index].profile_image}"),
                         ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Text(
+                                    Post.posts[index].username,
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                  Text(
+                                    ".${Post.posts[index].post_hours}h",
+                                    style: TextStyle(color: Colors.grey),
+                                  )
+                                ],
+                              ),
+                              Text(
+                                Post.posts[index].location,
+                                style: TextStyle(color: Colors.white),
+                              )
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.more_horiz,
+                            color: Colors.white,
+                          ),
+                        )
+                      ],
+                    ),
+                    Container(
+                      height: 350,
+                      child: Image.asset(
+                        "images/${Post.posts[index].post_image}",
+                        fit: BoxFit.cover,
                       ),
-                    ],
-                  );
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            IconButton(
+                              onPressed: () {},
+                              icon: Icon(Icons.favorite_outline),
+                              color: Colors.white,
+                            ),
+                            IconButton(
+                              onPressed: () {},
+                              icon: Icon(Icons.comment),
+                              color: Colors.white,
+                            ),
+                          ],
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          child: Text(
+                            "100 likes",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            Text(username[index],style: TextStyle(color: Colors.white),),
+                            Text(" The world is a mess and I love being messy! ",style: TextStyle(color: Colors.white) )
+                          ],
+                        ),
 
-                }),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 50,
+                    ),
+                  ],
+                );
+              },
+            ),
           ),
         ],
       ),
     );
   }
 }
-
-
-
-
-
-
-
-
-

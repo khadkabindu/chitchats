@@ -20,7 +20,9 @@ class FollowersList extends StatelessWidget {
         title: Text(username[index], style: TextStyle(color: Colors.white),),
         subtitle: Text(name[index], style: TextStyle(color: Colors.white),),
         trailing: ElevatedButton(
-          onPressed: (){},
+          onPressed: (){
+
+          },
           child: Text('Remove'),
         ),
       );
