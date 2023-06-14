@@ -108,15 +108,19 @@ class _LoginScreenState extends State<LoginScreen> {
                       Row(
                         children: [
                           Flexible(
-                            child: Radio(
-                              value: 1,
-                              groupValue: _selectedRadioValue,
-                              onChanged: _handleRadioValueChanged,
+                            child: Row(
+                              children: [
+                                Radio(
+                                  value: 1,
+                                  groupValue: _selectedRadioValue,
+                                  onChanged: _handleRadioValueChanged,
+                                ),
+                                Flexible(child: Text("Remember Me")),
+                              ],
                             ),
                           ),
-                          Text("Remember Me"),
                           SizedBox(
-                            width: 140,
+                            width: 90,
                           ),
                           Text(
                             "Forgot Password?",

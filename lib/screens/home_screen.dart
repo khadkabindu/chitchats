@@ -131,23 +131,31 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 100,
               ),
               SizedBox(
-                width: 210,
+                width: 10,
               ),
-              IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.notifications_outlined,
-                  color: Colors.white,
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+
+                  children: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.notifications_outlined,
+                        color: Colors.white,
+                      ),
+                      iconSize: 30,
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.favorite_outline,
+                        color: Colors.white,
+                      ),
+                      iconSize: 30,
+                    ),
+                  ],
                 ),
-                iconSize: 30,
-              ),
-              IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.favorite_outline,
-                  color: Colors.white,
-                ),
-                iconSize: 30,
               ),
             ],
           ),

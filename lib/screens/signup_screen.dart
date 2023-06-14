@@ -132,22 +132,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       Row(
                         children: [
                           Flexible(
-                            child: Radio(
-                              value: 1,
-                              groupValue: _selectedRadioValue,
-                              onChanged: _handleRadioValueChanged,
+                            child: Row(
+                              children: [
+                                Radio(
+                                  value: 1,
+                                  groupValue: _selectedRadioValue,
+                                  onChanged: _handleRadioValueChanged,
+                                ),
+                                Flexible(child: Text("Remember Me")),
+                              ],
                             ),
-                          ),
-                          Text("Remember Me"),
-                          SizedBox(
-                            width: 140,
-                          ),
-                          Text(
-                            "Forgot Password?",
-                            style: TextStyle(color: Colors.blue),
                           ),
                         ],
                       ),
+
                       SizedBox(
                         height: 20,
                       ),
